@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kota yang pernah ditempati</title>
+</head>
+
+<body>
+  <style>
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    #map {
+      height: 100%;
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+  <div id="map"></div>
+
+  <script>
+    var locations = [
+      [0.5070962889311029, 101.44709555841501, "Pekanbaru"],
+      [1.6667175951416324, 101.40030032277191, "Dumai"],
+      [-8.111217587366996, 115.09992744940679, "Singaraja"],
+      [1.1241314190293445, 104.05581666288916, "Batam"],
+      [-6.207202049757679, 106.84667310175972, "Jakarta"],
+      [-7.847378764126453, 112.64585649996512, "Malang"],
+      [-7.196598079052247, 112.75571965517271, "Surabaya"],
+      [-8.722539402245673, 115.17820500320887, "Kuta"],
+      [-6.2350577789082395, 106.97149289018748, "Bekasi"],
+      [-7.4487551223961495, 112.70501621507442, "Sidoarjo"],
+      [-8.781412553656022, 115.18346321801432, "Kuta Selatan"],
+      [-8.665354459097442, 115.20955574629599, "Denpasar"],
+      [-6.287298017772411, 106.71557921018847, "Tangerang Selatan"],
+      [-8.56419857978349, 115.21985542851246, "Abiansemal"],
+      [-8.53449164452091, 115.12732995334082, "Tabanan"],
+    ];
+
+    function initMap() {
+      area = { lat: -2.1730294, lng: 113.9046833 };
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: area,
+        zoom: 5
+      });
+
+      for (i = 0; i < locations.length; i++) {
+        marker = new google.maps.Marker({
+          position: new google.maps.LatLng(locations[i][0], locations[i][1]),
+          title: locations[i][2],
+          icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
+          map: map,
+        });
+      }
+    }
+  </script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?language=en&key=[PUT YOUR API KEY HERE]&callback=initMap"></script>
+</body>
+
+</html>
